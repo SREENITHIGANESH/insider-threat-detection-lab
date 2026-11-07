@@ -1,0 +1,259 @@
+=================================================================
+DIGITAL INVESTIGATION REPORT
+=================================================================
+Employee ID: EMP004
+Report generated (UTC): 2026-11-07T17:39:26.063722+00:00
+
+1. DLP FINDINGS
+-----------------------------------------------------------------
+DLP alerts: 1
+
+2. UEBA FINDINGS
+-----------------------------------------------------------------
+After-hours events: 3
+Bulk-download events: 1
+
+3. EMPLOYEE ACTIVITY
+-----------------------------------------------------------------
+Total recorded events: 36
+            timestamp_utc    event_type  sensitivity  file_count  bytes_mb            destination
+2026-11-01 10:29:00+00:00   file_access     internal           5        18                   none
+2026-11-01 11:51:00+00:00   file_access     internal           1         6                   none
+2026-11-01 14:06:00+00:00    email_send     internal           0         0         internal_email
+2026-11-01 16:22:00+00:00 file_download       public           2         1                   none
+2026-11-01 16:36:00+00:00  cloud_upload confidential           0        13 approved_company_cloud
+2026-11-01 16:51:00+00:00 usb_connected       public           0         0           approved_usb
+2026-11-02 11:58:00+00:00 file_download       public           1         2                   none
+2026-11-02 12:39:00+00:00 file_download confidential           2        21                   none
+2026-11-02 13:32:00+00:00 usb_connected     internal           0         0           approved_usb
+2026-11-02 17:26:00+00:00   file_access     internal           5         9                   none
+2026-11-03 10:05:00+00:00    email_send     internal           0         0         internal_email
+2026-11-03 11:46:00+00:00  cloud_upload confidential           0        16 approved_company_cloud
+2026-11-03 14:13:00+00:00    email_send     internal           0         0         internal_email
+2026-11-03 15:36:00+00:00    email_send       public           0         0         internal_email
+2026-11-03 16:08:00+00:00 usb_connected       public           0         0           approved_usb
+2026-11-04 11:14:00+00:00 usb_connected confidential           0         0           approved_usb
+2026-11-04 13:49:00+00:00 file_download       public           5        20                   none
+2026-11-04 14:17:00+00:00         login     internal           0         0                   none
+2026-11-04 15:29:00+00:00 file_download       public           3        10                   none
+2026-11-04 17:09:00+00:00 usb_connected       public           0         0           approved_usb
+2026-11-05 09:45:00+00:00 usb_connected       public           0         0           approved_usb
+2026-11-05 11:50:00+00:00    email_send       public           0         0         internal_email
+2026-11-05 12:27:00+00:00         login confidential           0         0                   none
+2026-11-05 14:30:00+00:00  cloud_upload confidential           0        12 approved_company_cloud
+2026-11-05 15:04:00+00:00    email_send     internal           0         0         internal_email
+2026-11-05 15:31:00+00:00         login     internal           0         0                   none
+2026-11-06 15:31:00+00:00 usb_connected       public           0         0           approved_usb
+2026-11-06 16:17:00+00:00    email_send confidential           0         0         internal_email
+2026-11-06 16:42:00+00:00         login confidential           0         0                   none
+2026-11-06 17:38:00+00:00         login confidential           0         0                   none
+2026-11-06 17:56:00+00:00 file_download confidential           5         9                   none
+2026-11-06 23:45:00+00:00         login         none           0         0                   none
+2026-11-06 23:50:00+00:00 file_download confidential         450      1800                   none
+2026-11-07 00:15:00+00:00  cloud_upload confidential         450      1800         personal_cloud
+2026-11-07 16:05:00+00:00    email_send       public           0         0         internal_email
+2026-11-07 17:13:00+00:00  cloud_upload       public           0         8 approved_company_cloud
+
+4. CORRELATED INCIDENT ANALYSIS
+-----------------------------------------------------------------
+Correlated activity groups: 8
+
+Incident 1
+Classification: USB_ACTIVITY_REVIEW
+Risk score: 0/100
+Risk priority: LOW
+Risk factors:
+  - No elevated risk indicators identified.
+Events in group: 3
+Confidential files downloaded: 0
+External transfer observed: False
+Explanation: An approved USB device connection was recorded. No file-copy evidence is available in this event.
+Evidence flags:
+  - unusual_confidential_download: False
+  - personal_cloud_upload: False
+  - external_email: False
+  - approved_company_cloud: True
+  - approved_usb_connection: True
+  - external_transfer_observed: False
+Related events:
+  - 2026-11-01T16:22:00+00:00 | file_download | none
+  - 2026-11-01T16:36:00+00:00 | cloud_upload | approved_company_cloud
+  - 2026-11-01T16:51:00+00:00 | usb_connected | approved_usb
+
+Incident 2
+Classification: CONFIDENTIAL_DATA_ACCESS_REVIEW
+Risk score: 15/100
+Risk priority: LOW
+Risk factors:
+  - Confidential data download observed
+Events in group: 3
+Confidential files downloaded: 2
+External transfer observed: False
+Explanation: Confidential files were downloaded. The volume did not meet the configured bulk-download threshold. Review access authorisation and business justification.
+Evidence flags:
+  - unusual_confidential_download: False
+  - personal_cloud_upload: False
+  - external_email: False
+  - approved_company_cloud: False
+  - approved_usb_connection: True
+  - external_transfer_observed: False
+Related events:
+  - 2026-11-02T11:58:00+00:00 | file_download | none
+  - 2026-11-02T12:39:00+00:00 | file_download | none
+  - 2026-11-02T13:32:00+00:00 | usb_connected | approved_usb
+
+Incident 3
+Classification: USB_ACTIVITY_REVIEW
+Risk score: 0/100
+Risk priority: LOW
+Risk factors:
+  - No elevated risk indicators identified.
+Events in group: 2
+Confidential files downloaded: 0
+External transfer observed: False
+Explanation: An approved USB device connection was recorded. No file-copy evidence is available in this event.
+Evidence flags:
+  - unusual_confidential_download: False
+  - personal_cloud_upload: False
+  - external_email: False
+  - approved_company_cloud: False
+  - approved_usb_connection: True
+  - external_transfer_observed: False
+Related events:
+  - 2026-11-03T15:36:00+00:00 | email_send | internal_email
+  - 2026-11-03T16:08:00+00:00 | usb_connected | approved_usb
+
+Incident 4
+Classification: TEMPORAL_ACTIVITY_GROUP
+Risk score: 0/100
+Risk priority: LOW
+Risk factors:
+  - No elevated risk indicators identified.
+Events in group: 2
+Confidential files downloaded: 0
+External transfer observed: False
+Explanation: Events occurred within the configured time window. No specific suspicious sequence was established.
+Evidence flags:
+  - unusual_confidential_download: False
+  - personal_cloud_upload: False
+  - external_email: False
+  - approved_company_cloud: False
+  - approved_usb_connection: False
+  - external_transfer_observed: False
+Related events:
+  - 2026-11-04T13:49:00+00:00 | file_download | none
+  - 2026-11-04T14:17:00+00:00 | login | none
+
+Incident 5
+Classification: TEMPORAL_ACTIVITY_GROUP
+Risk score: 0/100
+Risk priority: LOW
+Risk factors:
+  - No elevated risk indicators identified.
+Events in group: 2
+Confidential files downloaded: 0
+External transfer observed: False
+Explanation: Events occurred within the configured time window. No specific suspicious sequence was established.
+Evidence flags:
+  - unusual_confidential_download: False
+  - personal_cloud_upload: False
+  - external_email: False
+  - approved_company_cloud: False
+  - approved_usb_connection: False
+  - external_transfer_observed: False
+Related events:
+  - 2026-11-05T11:50:00+00:00 | email_send | internal_email
+  - 2026-11-05T12:27:00+00:00 | login | none
+
+Incident 6
+Classification: TEMPORAL_ACTIVITY_GROUP
+Risk score: 0/100
+Risk priority: LOW
+Risk factors:
+  - No elevated risk indicators identified.
+Events in group: 3
+Confidential files downloaded: 0
+External transfer observed: False
+Explanation: Events occurred within the configured time window. No specific suspicious sequence was established.
+Evidence flags:
+  - unusual_confidential_download: False
+  - personal_cloud_upload: False
+  - external_email: False
+  - approved_company_cloud: True
+  - approved_usb_connection: False
+  - external_transfer_observed: False
+Related events:
+  - 2026-11-05T14:30:00+00:00 | cloud_upload | approved_company_cloud
+  - 2026-11-05T15:04:00+00:00 | email_send | internal_email
+  - 2026-11-05T15:31:00+00:00 | login | none
+
+Incident 7
+Classification: CONFIDENTIAL_DATA_ACCESS_REVIEW
+Risk score: 15/100
+Risk priority: LOW
+Risk factors:
+  - Confidential data download observed
+Events in group: 5
+Confidential files downloaded: 5
+External transfer observed: False
+Explanation: Confidential files were downloaded. The volume did not meet the configured bulk-download threshold. Review access authorisation and business justification.
+Evidence flags:
+  - unusual_confidential_download: False
+  - personal_cloud_upload: False
+  - external_email: False
+  - approved_company_cloud: False
+  - approved_usb_connection: True
+  - external_transfer_observed: False
+Related events:
+  - 2026-11-06T15:31:00+00:00 | usb_connected | approved_usb
+  - 2026-11-06T16:17:00+00:00 | email_send | internal_email
+  - 2026-11-06T16:42:00+00:00 | login | none
+  - 2026-11-06T17:38:00+00:00 | login | none
+  - 2026-11-06T17:56:00+00:00 | file_download | none
+
+Incident 8
+Classification: POTENTIAL_DATA_EXFILTRATION
+Risk score: 60/100
+Risk priority: HIGH
+Risk factors:
+  - High-volume confidential data download
+  - Personal cloud destination observed
+  - External transfer and confidential access are temporally correlated; file-level linkage is unverified
+Events in group: 3
+Confidential files downloaded: 450
+External transfer observed: True
+Explanation: Confidential file downloads and an external destination event were observed within the correlation window. File-level linkage and authorisation require verification.
+Evidence flags:
+  - unusual_confidential_download: True
+  - personal_cloud_upload: True
+  - external_email: False
+  - approved_company_cloud: False
+  - approved_usb_connection: False
+  - external_transfer_observed: True
+Related events:
+  - 2026-11-06T23:45:00+00:00 | login | none
+  - 2026-11-06T23:50:00+00:00 | file_download | none
+  - 2026-11-07T00:15:00+00:00 | cloud_upload | personal_cloud
+
+5. FORENSIC HASH COMPARISON
+-----------------------------------------------------------------
+Endpoint files: 3
+Cloud files: 3
+Matching file hashes: 2
+
+6. INVESTIGATION LIMITATIONS
+-----------------------------------------------------------------
+Matching hashes establish identical file contents, not transfer direction or employee attribution.
+Cloud audit logs, endpoint telemetry, authentication records and authorisation context require further review.
+HR context must be obtained only through authorised processes.
+Temporal correlation does not establish file-level transfer linkage.
+Risk scores prioritise analyst review and do not establish malicious intent or employee culpability.
+
+7. INVESTIGATION ASSESSMENT
+-----------------------------------------------------------------
+Multiple security indicators require further investigation.
+No conclusion about employee intent or culpability is made.
+
+=================================================================
+END OF REPORT
+=================================================================
