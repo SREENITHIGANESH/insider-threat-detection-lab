@@ -1,4 +1,3 @@
-
 # Insider Threat Detection & Digital Investigation Lab
 
 A Python-based insider threat detection and digital investigation prototype combining Data Loss Prevention (DLP), User and Entity Behaviour Analytics (UEBA), incident correlation, risk scoring, and forensic evidence analysis.
